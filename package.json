@@ -1,0 +1,25 @@
+{
+  "name": "express-on-vercel",
+  "version": "1.0.0",
+  "description": "This project is going to be used to show the NashJS audience how to deploy a simple Express API to Vercel.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyshadowsmith/express-on-vercel.git"
+  },
+  "author": "Shadow Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heyshadowsmith/express-on-vercel/issues"
+  },
+  "homepage": "https://github.com/heyshadowsmith/express-on-vercel#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
