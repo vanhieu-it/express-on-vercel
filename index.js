@@ -1,16 +1,21 @@
-// Add Express
-const express = require('express')
+const express = require('express');
+const tinNhanRoutes = require('./src/routes/tinNhanRoutes');
+const pool = require('./src/db');
+require('dotenv').config();
 
-// Initialize Express
-const app = express()
+const app = express();
+const port = process.env.PORT || 3000;
 
-// Create GET request
-app.get('/', (req, res) => {
-  res.send('Express on Vercel')
-})
+// Kết nối đến cơ sở dữ liệu PostgreSQL
+pool.connect();
 
-// Initialize server
-app.listen(5000, () => {
-  console.log('Running on port 5000.')
-})
+app.use(express.json());
+
+// Sử dụng routes cho tin nhắn
+app.use('/api/tinnhan', tinNhanRoutes);
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 module.exports = app;
