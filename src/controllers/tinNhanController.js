@@ -43,7 +43,6 @@ exports.updateTinNhan = async (req, res) => {
     if (!nguoiTao || !noiDung) {
         return res.status(400).json({ message: 'Vui lòng cung cấp người tạo và nội dung' });
     }
-
     try {
         const updatedTinNhan = await tinNhanModel.updateTinNhan(req.params.id, nguoiTao, noiDung);
         res.json(updatedTinNhan);

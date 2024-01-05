@@ -1,13 +1,4 @@
-const { Pool } = require('pg');
-require('dotenv').config();
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false,
-    },
-});
-
+pool = require('../db.js');
 const getAllTinNhan = async () => {
     const result = await pool.query('SELECT * FROM tin_nhan');
     return result.rows;
