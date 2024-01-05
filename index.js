@@ -8,8 +8,21 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://react-login-app-gray.vercel.app',
+  // Thêm các domain khác nếu cần
+];
+
 const corsOptions = {
-  origin: 'http://localhost:3000',  // Thay đổi domain tùy theo ứng dụng của bạn
+  origin: (origin, callback) => {
+    // Kiểm tra xem origin có trong danh sách được phép hay không
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
